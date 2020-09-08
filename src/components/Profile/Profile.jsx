@@ -1,24 +1,16 @@
 import React from "react";
 import panorama from "../../assets/img/panorama.jpg";
-import './Profile.css';
+import s from './Profile.module.css';
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
     return (
-        <main className='content'>
-            <img className='panorama' src={panorama} />
+        <main className={s.content}>
+            <img className={s.panorama} src={panorama} />
             <div>
                 ava + description
             </div>
-            <div>
-                My posts
-                <div>
-                    New post
-                </div>
-                <div>
-                    <div>Post 1</div>
-                    <div>Post 2</div>
-                </div>
-            </div>
+            <MyPosts />
             Main content
         </main>
     )

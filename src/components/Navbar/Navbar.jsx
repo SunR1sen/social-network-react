@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <nav className={s.nav}>
             <ul className={s.nav__menu}>
-                <li><a  className={s.nav__link} href="#">Profile</a></li>
+                <li><a  className={`${s.nav__link} ${s.active}`} href="#">Profile</a></li>
                 <li><a  className={s.nav__link} href="#">Messages</a></li>
                 <li><a  className={s.nav__link} href="#">News</a></li>
                 <li><a  className={s.nav__link} href="#">Music</a></li>

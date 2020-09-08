@@ -18,3 +18,7 @@
 .nav__menu-item:not(:first-child) {
     margin-top: 5px;
 }
+
+.active {
+    color: gold;
+}

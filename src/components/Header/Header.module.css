@@ -1,9 +1,11 @@
 .logo {
     width: 50px;
     height: auto;
+    cursor: pointer;
 }
 
 .header {
     grid-area: header;
     background-color: #05b565;
+    padding: 5px;
 }
