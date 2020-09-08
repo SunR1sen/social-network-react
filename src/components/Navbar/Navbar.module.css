@@ -1,0 +1,20 @@
+.nav {
+    grid-area: nav;
+    background-color: #05b565;
+    padding: 15px;
+}
+
+.nav__menu {
+    list-style: none;
+}
+
+.nav__link {
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.nav__menu-item:not(:first-child) {
+    margin-top: 5px;
+}

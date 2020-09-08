@@ -1,0 +1,8 @@
+.panorama {
+    max-width: 100%;
+}
+
+.content {
+    grid-area: content;
+    background-color: lawngreen;
+}

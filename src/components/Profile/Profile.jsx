@@ -1,5 +1,6 @@
 import React from "react";
-import panorama from "../assets/img/panorama.jpg";
+import panorama from "../../assets/img/panorama.jpg";
+import './Profile.css';
 
 const Profile = () => {
     return (
