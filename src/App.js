@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 
-const App = () => {
+const App = (props) => {
     return (
         <Router>
             <div className="app-wrapper">
@@ -22,20 +22,20 @@ const App = () => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Switch>
-                        <Route path='/dialogs'>
-                            <Dialogs />
-                        </Route>
                         <Route path='/profile'>
-                            <Profile />
+                            <Profile posts={props.posts}/>
+                        </Route>
+                        <Route path='/dialogs'>
+                            <Dialogs dialogs={props.dialogs} messages={props.messages}/>
                         </Route>
                         <Route path='/news'>
-                            <News />
+                            <News/>
                         </Route>
                         <Route path='/music'>
-                            <Music />
+                            <Music/>
                         </Route>
                         <Route path='/settings'>
-                            <Settings />
+                            <Settings/>
                         </Route>
                     </Switch>
                 </div>
