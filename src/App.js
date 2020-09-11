@@ -23,10 +23,10 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     <Switch>
                         <Route path='/profile'>
-                            <Profile posts={props.posts}/>
+                            <Profile posts={props.appState.posts}/>
                         </Route>
                         <Route path='/dialogs'>
-                            <Dialogs dialogs={props.dialogs} messages={props.messages}/>
+                            <Dialogs dialogs={props.appState.dialogs} messages={props.appState.messages}/>
                         </Route>
                         <Route path='/news'>
                             <News/>
