@@ -1,11 +1,12 @@
 import {rerenderEntireTree} from "../render";
 
 let state = {
-    profile: {
+    profilePage: {
         posts: [
             { message: 'Hi, petushnya!', likesCount: 10, id: 1},
             { message: 'How are you, petushok?', likesCount: 15, id: 2},
         ],
+        newPostText: '',
     },
     dialogsPage: {
         messages: [
@@ -20,13 +21,34 @@ let state = {
             { name: 'Natasha', id: 4},
             { name: 'Griffindor', id: 5},
         ],
+        newMessageText: '',
     },
     sidebar: {},
 }
 
-export function addPost(postMessage) {
-    let item = { message: postMessage, likesCount: 2, id: 3};
-    state.profile.posts.push(item);
+window.state = state;
+
+export let updateNewMessageText = (newText) => {
+    state.dialogsPage.newMessageText = newText;
+    rerenderEntireTree(state);
+}
+
+export let addMessage = () => {
+    let item = {message: state.dialogsPage.newMessageText, id: 4}
+    state.dialogsPage.messages.push(item);
+    state.dialogsPage.newMessageText = '';
+    rerenderEntireTree(state);
+}
+
+export let addPost = () => {
+    let item = { message: state.profilePage.newPostText, likesCount: 0, id: 3};
+    state.profilePage.posts.push(item);
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
 
