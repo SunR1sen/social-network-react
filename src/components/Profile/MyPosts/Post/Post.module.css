@@ -1,8 +1,17 @@
 .posts__item {
     color: rebeccapurple;
+    border: 1px solid #fff;
 }
 
 .img {
     width: 50px;
     height: auto;
+}
+
+.message {
+    margin-left: 20px;
+}
+
+.likes {
+    margin-bottom: 30px;
 }

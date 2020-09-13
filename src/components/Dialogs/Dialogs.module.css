@@ -11,6 +11,10 @@
     color: #d9b438;
 }
 
+.btn {
+    display: block;
+}
+
 .messages {
     padding: 10px;
 }

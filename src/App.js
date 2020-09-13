@@ -6,24 +6,18 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import './App.css';
 
 const App = (props) => {
     return (
-        <Router>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Switch>
                         <Route path='/profile'>
-                            <Profile state={props.state.profile}/>
+                            <Profile state={props.state.profile} addPost={props.addPost}/>
                         </Route>
                         <Route path='/dialogs'>
                             <Dialogs
@@ -42,7 +36,6 @@ const App = (props) => {
                     </Switch>
                 </div>
             </div>
-        </Router>
     );
 }
 
