@@ -27,31 +27,60 @@ let store = {
     _callSubscriber() {
         console.log('State changed')
     },
+
     getState() {
         return this._state;
     },
-    updateNewMessageText(newText) {
-        this._state.dialogsPage.newMessageText = newText;
-        this._callSubscriber(this._state);
-    },
-    addMessage() {
-        let item = {message: this._state.dialogsPage.newMessageText, id: 4}
-        this._state.dialogsPage.messages.push(item);
-        this._state.dialogsPage.newMessageText = '';
-        this._callSubscriber(this._state);
-    },
-    addPost() {
-        let item = { message: this._state.profilePage.newPostText, likesCount: 0, id: 3};
-        this._state.profilePage.posts.push(item);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    // updateNewMessageText(newText) {
+    //     this._state.dialogsPage.newMessageText = newText;
+    //     this._callSubscriber(this._state);
+    // },
+    // addMessage() {
+    //     let item = {message: this._state.dialogsPage.newMessageText, id: 4}
+    //     this._state.dialogsPage.messages.push(item);
+    //     this._state.dialogsPage.newMessageText = '';
+    //     this._callSubscriber(this._state);
+    // },
+    // updateNewPostText(newText) {
+    //     this._state.profilePage.newPostText = newText;
+    //     this._callSubscriber(this._state);
+    // },
+    // addPost() {
+    //     let item = { message: this._state.profilePage.newPostText, likesCount: 0, id: 3};
+    //     this._state.profilePage.posts.push(item);
+    //     this._state.profilePage.newPostText = '';
+    //     this._callSubscriber(this._state);
+    // },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let item = {
+                message: this._state.profilePage.newPostText,
+                likesCount: 0,
+                id: 3
+            };
+            this._state.profilePage.posts.push(item);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        } else if (action.type === 'SEND-MESSAGE') {
+            let item = {
+                message: this._state.dialogsPage.newMessageText,
+                id: 4
+            }
+            this._state.dialogsPage.messages.push(item);
+            this._state.dialogsPage.newMessageText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 }
 
