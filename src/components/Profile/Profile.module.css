@@ -1,6 +1,4 @@
-
-
 .content {
     grid-area: content;
-    background-color: lawngreen;
+    background-color: #f0f0f0;
 }

@@ -6,6 +6,8 @@
 
 .header {
     grid-area: header;
-    background-color: #05b565;
+    background-color: #4b75a5;
     padding: 5px;
+    position: relative;
 }
+

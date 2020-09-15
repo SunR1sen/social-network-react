@@ -24,11 +24,11 @@ let store = {
         },
         sidebar: {},
     },
-    getState() {
-        return this._state;
-    },
     _callSubscriber() {
         console.log('State changed')
+    },
+    getState() {
+        return this._state;
     },
     updateNewMessageText(newText) {
         this._state.dialogsPage.newMessageText = newText;
