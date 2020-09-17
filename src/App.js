@@ -2,12 +2,12 @@ import React from 'react';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { Switch, Route } from "react-router-dom";
 import './App.css';
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
     return (
@@ -17,15 +17,10 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     <Switch>
                         <Route path='/profile'>
-                            <Profile state={props.state.profilePage}
-                                     dispatch={props.dispatch}
-                            />
+                            <Profile store={props.store}/>
                         </Route>
                         <Route path='/dialogs'>
-                            <Dialogs
-                                state={props.state.dialogsPage}
-                                dispatch={props.dispatch}
-                            />
+                            <DialogsContainer store={props.store}/>
                         </Route>
                         <Route path='/news'>
                             <News/>

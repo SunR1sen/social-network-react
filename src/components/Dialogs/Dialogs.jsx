@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DIalogItem/DialogItem";
 import Message from "./Message/Message";
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogsReducer";
 
 
 const Dialogs = (props) => {
@@ -12,14 +11,14 @@ const Dialogs = (props) => {
 
     // const newMessage = React.createRef();
 
-    const sendMessage = () => {
-        props.dispatch(sendMessageActionCreator());
+    const onSendMessage = () => {
+        props.sendMessage();
     }
 
     const onNewTextMessage = (e) => {
         // let text = newMessage.current.value;
         let text = e.target.value;
-        props.dispatch(updateNewMessageTextActionCreator(text));
+        props.updateNewMessageText(text)
     }
 
     return (
@@ -35,7 +34,7 @@ const Dialogs = (props) => {
                     value={props.state.newMessageText}
                     placeholder='Enter your message...'
                 />
-                <button onClick={sendMessage} className={s.btn}>Отправить</button>
+                <button onClick={onSendMessage} className={s.btn}>Отправить</button>
             </div>
         </div>
     )

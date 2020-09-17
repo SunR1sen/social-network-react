@@ -3,8 +3,8 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 const initialState = {
     posts: [
-        { message: 'Hi, petushnya!', likesCount: 10, id: 1},
-        { message: 'How are you, petushok?', likesCount: 15, id: 2},
+        {message: 'Hi, petushnya!', likesCount: 10, id: 1},
+        {message: 'How are you, petushok?', likesCount: 15, id: 2},
     ],
     newPostText: '',
 }
@@ -30,7 +30,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
+export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
 
 export default profileReducer;

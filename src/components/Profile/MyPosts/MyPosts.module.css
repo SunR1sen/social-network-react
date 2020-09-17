@@ -4,9 +4,18 @@
 
 .postButton {
     margin-top: 10px;
-    display: block;
+    height: 40px;
+    width: 200px;
 }
 
-.myPosts {
+.inputWrapper {
+    display: flex;
+}
+
+.textarea {
+    min-height: 40px;
+}
+
+.postsTitle {
     padding-bottom: 10px;
 }
