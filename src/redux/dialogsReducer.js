@@ -4,7 +4,7 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 const initialState = {
     messages: [
         { message: 'Hi!', id: 1},
-        { message: 'Pidarok!', id: 2},
+        { message: 'I\'m a message', id: 2},
         { message: 'Yo', id: 3},
     ],
     dialogs: [
