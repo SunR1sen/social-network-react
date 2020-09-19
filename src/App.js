@@ -17,10 +17,10 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     <Switch>
                         <Route path='/profile'>
-                            <Profile store={props.store}/>
+                            <Profile/>
                         </Route>
                         <Route path='/dialogs'>
-                            <DialogsContainer store={props.store}/>
+                            <DialogsContainer/>
                         </Route>
                         <Route path='/news'>
                             <News/>
