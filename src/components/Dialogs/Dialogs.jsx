@@ -30,7 +30,7 @@ const Dialogs = (props) => {
                     placeholder='Enter your message...'
                     className={s.textarea}
                 />
-                <button onClick={onSendMessage} className={s.btn}>Отправить</button>
+                <button onClick={props.dialogsPage.newMessageText && onSendMessage} className={s.btn}>Отправить</button>
             </div>
         </div>
     )

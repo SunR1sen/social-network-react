@@ -1,4 +1,6 @@
 $primaryColor: #4A90E2;
+$blueLikeHeader: #4b75a5;
+$blueLikeNavbar: #375c89;
 
 .dialogs {
   display: grid;
@@ -21,17 +23,22 @@ $primaryColor: #4A90E2;
 
     .btn {
       display: block;
+      color: $blueLikeNavbar;
       position: relative;
-      padding: 1em 3em;
+      font-size: 24px;
+      font-weight: 700;
+      padding: 0.5em 1em;
       margin-top: 10px;
       border: 3px solid #375c89;
       transition: all 200ms ease;
       //box-shadow: 0 4px 10px 2px rgba(black, 0.2);
 
       &:hover {
+        cursor: pointer;
         color: white;
+        background-color: $blueLikeNavbar;
         box-shadow: none;
-        border: 3px solid $primaryColor;
+        //border: 3px solid $primaryColor;
       }
     }
   }

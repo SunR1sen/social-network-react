@@ -3,16 +3,16 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 const initialState = {
     messages: [
-        { message: 'Hi!', id: 1},
-        { message: 'I\'m a message', id: 2},
-        { message: 'Yo', id: 3},
+        {message: 'Hi!', id: 1},
+        {message: 'I\'m a message', id: 2},
+        {message: 'Yo', id: 3},
     ],
     dialogs: [
-        { name: 'Diman', id: 1},
-        { name: 'Marina', id: 2},
-        { name: 'Morti', id: 3},
-        { name: 'Natasha', id: 4},
-        { name: 'Griffindor', id: 5},
+        {name: 'Diman', id: 1},
+        {name: 'Marina', id: 2},
+        {name: 'Morti', id: 3},
+        {name: 'Natasha', id: 4},
+        {name: 'Griffindor', id: 5},
     ],
     newMessageText: '',
 };
@@ -25,13 +25,17 @@ const dialogsReducer = (state = initialState, action) => {
                 message: state.newMessageText,
                 id: 4
             }
-            state.messages.push(item);
-            state.newMessageText = '';
-            return state;
+            return {
+                ...state,
+                messages: [...state.messages, item],
+                newMessageText: ''
+            };
 
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newText;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.newText
+            };
 
         default:
             return state;
