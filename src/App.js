@@ -8,6 +8,7 @@ import Settings from "./components/Settings/Settings";
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Users from "./components/Users/Users";
 
 const App = (props) => {
     return (
@@ -30,6 +31,9 @@ const App = (props) => {
                         </Route>
                         <Route path='/settings'>
                             <Settings/>
+                        </Route>
+                        <Route path='/users'>
+                            <Users />
                         </Route>
                     </Switch>
                 </div>

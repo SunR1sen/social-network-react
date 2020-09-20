@@ -7,7 +7,7 @@
 .header {
     grid-area: header;
     background-color: #4b75a5;
-    padding: 5px;
+    padding: 3px;
     width: 100%;
     height: 54px;
     position: fixed;
