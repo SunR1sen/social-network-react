@@ -1,0 +1,38 @@
+.userWrapper {
+  height: 100px;
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+  border: 2px solid black;
+
+  .photoContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .userPhoto {
+      max-width: 60px;
+      display: block;
+      margin: 10px;
+    }
+
+    .subBtn {
+      display: block;
+    }
+  }
+
+  .infoContainer {
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+
+    .leftSide {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
