@@ -4,12 +4,15 @@ import DialogItem from "./DIalogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-
-    const dialogsElements = props.dialogsPage.dialogs.map((d, index) => <DialogItem name={d.name} id={d.id} key={index}/>)
-    const messagesElements = props.dialogsPage.messages.map((m, index) => <Message message={m.message} id={m.id} key={index}/>)
+    const dialogsElements = props.dialogsPage.dialogs.map((d, index) =>
+        <DialogItem name={d.name} id={d.id} key={index}/>)
+    const messagesElements = props.dialogsPage.messages.map((m, index) =>
+        <Message message={m.message} id={m.id} key={index}/>)
 
     const onSendMessage = () => {
-        props.sendMessage();
+        if (props.dialogsPage.newMessageText !== '') {
+            props.sendMessage();
+        }
     }
 
     const onNewTextMessage = (e) => {
@@ -30,7 +33,7 @@ const Dialogs = (props) => {
                     placeholder='Enter your message...'
                     className={s.textarea}
                 />
-                <button onClick={props.dialogsPage.newMessageText && onSendMessage} className={s.btn}>Отправить</button>
+                <button onClick={onSendMessage} className={s.btn}>Отправить</button>
             </div>
         </div>
     )

@@ -1,15 +1,20 @@
 import React from 'react';
 import s from './Header.module.css';
 import logo from "./logo.png";
+import { Layout } from 'antd';
 
-const Header = () => {
+const { Header } = Layout;
+
+const SiteHeader = () => {
     return (
         <header className={s.header}>
-            <div className={s.headerWrapper}>
-                <img alt={""} src={logo} className={s.logo}/>
-            </div>
+            <Layout>
+                <Header className={s.header}>
+                    <img src={logo} className={s.logo}  alt={''}/>
+                </Header>
+            </Layout>
         </header>
     )
 }
 
-export default Header;
+export default SiteHeader;
