@@ -40,3 +40,23 @@
     }
   }
 }
+
+.page {
+  width: 200px;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .pageNumber {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #4A90E2;
+  }
+
+  .activePage {
+    font-weight: bold;
+  }
+}
+

@@ -1,53 +1,83 @@
 import React from 'react';
-import {Avatar} from 'antd';
-import {UserOutlined} from '@ant-design/icons';
+import s from "./Users.module.scss";
+import {Avatar} from "antd";
+import {UserOutlined} from "@ant-design/icons";
 import 'antd/dist/antd.css';
-import s from './Users.module.scss'
-import * as axios from 'axios';
+import cl from 'classnames';
+import * as axios from "axios";
 
-const Users = (props) => {
+class Users extends React.Component {
 
-    if (props.users.length === 0) {
+    componentDidMount() {
         axios
-            .get('https://social-network.samuraijs.com/api/1.0/users')
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-                props.setUsers(response.data.items)
+                this.props.setUsers(response.data.items);
+                if (response.data.totalCount > 100) {
+                    this.props.setTotalUsersCount(100);
+
+                }
             })
     }
 
-    return <div>
-        {props.users.map(u => <div key={u.id} className={s.userWrapper}>
-            <div className={s.photoContainer}>
+    onPageChanged = (p) => {
+        this.props.setCurrentPage(p);
+        axios
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
+    }
 
-                {u.photos.small
-                    ? <img className={s.userPhoto} src={u.photos.small} alt=''/>
-                    : <Avatar size={64} icon={<UserOutlined/>}/>}
+    render() {
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
 
-                {u.followed
-                    ? <button className={s.subBtn} onClick={() => props.unfollow(u.id)}>Отписаться</button>
-                    : <button className={s.subBtn} onClick={() => props.follow(u.id)}>Подписаться</button>
+        return <div>
+
+            <div className={s.page}>
+                {
+                    pages.map(p => {
+                        return <span onClick={() => this.onPageChanged(p)}
+                                     className={cl(s.pageNumber, this.props.currentPage === p && s.activePage)}>{p}</span>
+                    })
                 }
 
             </div>
-            <div className={s.infoContainer}>
-                <div className={s.leftSide}>
-                    <span className={s.userName}>{u.name}</span>
-                    <p className={s.status}>{u.status}</p>
+            {this.props.users.map(u => <div key={u.id} className={s.userWrapper}>
+                <div className={s.photoContainer}>
+
+                    {u.photos.small
+                        ? <img className={s.userPhoto} src={u.photos.small} alt=''/>
+                        : <Avatar size={64} icon={<UserOutlined/>}/>}
+
+                    {u.followed
+                        ? <button className={s.subBtn} onClick={() => this.props.unfollow(u.id)}>Отписаться</button>
+                        : <button className={s.subBtn} onClick={() => this.props.follow(u.id)}>Подписаться</button>
+                    }
 
                 </div>
-                <div className={s.rightSide}>
-                    <div className={s.location}>
-                        <p>Gorod</p>
-                        <p>Strana</p>
+                <div className={s.infoContainer}>
+                    <div className={s.leftSide}>
+                        <span className={s.userName}>{u.name}</span>
+                        <p className={s.status}>{u.status}</p>
+
                     </div>
+                    <div className={s.rightSide}>
+                        <div className={s.location}>
+                            <p>Gorod</p>
+                            <p>Strana</p>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
 
-        </div>)}
-    </div>
-
-
+            </div>)}
+        </div>
+    }
 }
 
 export default Users;
