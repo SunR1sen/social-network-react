@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
-import logo from "./logo.png";
+import logo from "../../assets/images/logo.png";
 import { Layout } from 'antd';
 
 const { Header } = Layout;

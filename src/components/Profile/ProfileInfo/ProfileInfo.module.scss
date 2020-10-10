@@ -1,0 +1,24 @@
+.panorama {
+  max-width: 100%;
+}
+
+.descriptionBlock {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  .profilePhoto {
+    margin-right: 30px;
+  }
+
+  .aboutTitle {
+    margin: 0;
+  }
+
+  .aboutMe {
+    font-size: 20px;
+    margin: 20px;
+  }
+
+}
+

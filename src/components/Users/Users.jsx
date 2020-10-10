@@ -1,83 +1,61 @@
 import React from 'react';
 import s from "./Users.module.scss";
+import cl from "classnames";
 import {Avatar} from "antd";
 import {UserOutlined} from "@ant-design/icons";
 import 'antd/dist/antd.css';
-import cl from 'classnames';
-import * as axios from "axios";
+import {NavLink} from "react-router-dom";
+import {Button, Comment} from 'antd';
 
-class Users extends React.Component {
-
-    componentDidMount() {
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items);
-                if (response.data.totalCount > 100) {
-                    this.props.setTotalUsersCount(100);
-
-                }
-            })
+const Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
 
-    onPageChanged = (p) => {
-        this.props.setCurrentPage(p);
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            })
-    }
-
-    render() {
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-        let pages = [];
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i);
-        }
-
-        return <div>
+    return (
+        <div className={s.userPage}>
 
             <div className={s.page}>
                 {
                     pages.map(p => {
-                        return <span onClick={() => this.onPageChanged(p)}
-                                     className={cl(s.pageNumber, this.props.currentPage === p && s.activePage)}>{p}</span>
+                        return <Button type="primary"
+                                       shape="circle"
+                                       onClick={() => props.onPageChanged(p)}
+                                       className={cl(s.pageNumber, props.currentPage === p && s.activePage)}
+                                       key={p}>
+                            {p}
+                        </Button>
                     })
                 }
 
             </div>
-            {this.props.users.map(u => <div key={u.id} className={s.userWrapper}>
-                <div className={s.photoContainer}>
+            {props.users.map(u => <div key={u.id} className={s.userWrapper}>
+                <Comment
+                    author={u.name}
+                    avatar={
+                        <NavLink to={'/profile/' + u.id}>
+                            {u.photos.small
+                            ? <Avatar src={u.photos.small} alt="User photo"/>
+                            : <Avatar size={64} icon={<UserOutlined/>}/>}
+                        </NavLink>
 
-                    {u.photos.small
-                        ? <img className={s.userPhoto} src={u.photos.small} alt=''/>
-                        : <Avatar size={64} icon={<UserOutlined/>}/>}
-
-                    {u.followed
-                        ? <button className={s.subBtn} onClick={() => this.props.unfollow(u.id)}>Отписаться</button>
-                        : <button className={s.subBtn} onClick={() => this.props.follow(u.id)}>Подписаться</button>
                     }
-
-                </div>
+                    content={
+                        <p>No description</p>
+                    }
+                />
                 <div className={s.infoContainer}>
-                    <div className={s.leftSide}>
-                        <span className={s.userName}>{u.name}</span>
-                        <p className={s.status}>{u.status}</p>
-
-                    </div>
-                    <div className={s.rightSide}>
-                        <div className={s.location}>
-                            <p>Gorod</p>
-                            <p>Strana</p>
-                        </div>
-
-                    </div>
+                        {u.followed
+                            ? <button className={s.subBtn} onClick={() => props.unfollow(u.id)}>Отписаться</button>
+                            : <button className={s.subBtn} onClick={() => props.follow(u.id)}>Подписаться</button>
+                        }
                 </div>
 
             </div>)}
         </div>
-    }
+    )
 }
 
 export default Users;

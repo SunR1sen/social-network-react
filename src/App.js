@@ -11,6 +11,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import SiteHeader from "./components/Header/Header";
 import {Layout} from 'antd';
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const { Sider, Content} = Layout;
 
@@ -21,14 +22,14 @@ const App = (props) => {
                 <Navbar/>
             </Sider>
             <SiteHeader/>
-            <Layout>
+            <Layout className={s.content_wrap}>
                 <Content className={s.content_wrapper}>
                     <Switch>
                         <Route exact path='/'>
                             <Redirect to='/profile'/>
                         </Route>
-                        <Route path='/profile'>
-                            <Profile/>
+                        <Route path='/profile/:userId'>
+                            <ProfileContainer />
                         </Route>
                         <Route path='/dialogs'>
                             <DialogsContainer/>
