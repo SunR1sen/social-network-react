@@ -9,7 +9,7 @@ import {
 } from "../../redux/usersReducer";
 import React from "react";
 import * as axios from "axios";
-import Preloader from "../Preloader/Preloader";
+import Preloader from "../../common/Preloader/Preloader";
 
 class UsersAPIComponent extends React.Component {
 
@@ -61,13 +61,29 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        follow: (userId) => {
+            dispatch(followActionCreator(userId))
+        },
+        unfollow: (userId) => {
+            dispatch(unfollowActionCreator(userId))
+        },
+        setUsers: (users) => {
+            dispatch(setUsersActionCreator(users))
+        },
+        setCurrentPage: (number) => {
+            dispatch(setCurrentPageActionCreator(number))
+        },
+        setTotalUsersCount: (totalCount) => {
+            dispatch(setTotalUsersCountActionCreator(totalCount))
+        },
+        toggleIsFetching: (isFetching) => {
+            dispatch(toggleIsFetchingActionCreator(isFetching))
+        }
+    }
+}
 
-export default connect(mapStateToProps, {
-    follow: followActionCreator,
-    unfollow: unfollowActionCreator,
-    setUsers: setUsersActionCreator,
-    setCurrentPage: setCurrentPageActionCreator,
-    setTotalUsersCount: setTotalUsersCountActionCreator,
-    toggleIsFetching: toggleIsFetchingActionCreator,
-})(UsersAPIComponent)
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent)
 

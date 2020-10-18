@@ -7,10 +7,23 @@
 .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: fixed;
     z-index: 1000;
     max-height: 60px;
-    width: 100%
+    width: 100%;
+
+    .loginBlock {
+        color: white;
+
+        .loginLogo {
+            margin-right: 5px;
+        }
+    }
+
+    .login {
+        color: white;
+    }
 }
 
 /*.header {*/

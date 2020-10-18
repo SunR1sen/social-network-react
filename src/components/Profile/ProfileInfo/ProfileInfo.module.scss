@@ -11,14 +11,45 @@
     margin-right: 30px;
   }
 
+  .profileInfo_wrapper {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .aboutMe_wrapper {
+    display: grid;
+    grid-template-columns: 100px 4fr;
+    gap: 10px;
+  }
+
   .aboutTitle {
     margin: 0;
+    align-self: center;
+    //justify-self: center;
   }
 
   .aboutMe {
     font-size: 20px;
-    margin: 20px;
+    align-self: center;
+    margin: 0;
   }
+
+  .profile_fullname {
+    display: grid;
+    grid-template-columns: 100px 4fr;
+    gap: 10px;
+
+    .fullname_title {
+      align-self: center;
+    }
+
+    .fullname {
+      font-size: 20px;
+      align-self: center;
+      margin: 0;
+    }
+  }
+
 
 }
 

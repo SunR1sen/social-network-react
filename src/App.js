@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -9,9 +8,10 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import './App.module.scss';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import SiteHeader from "./components/Header/Header";
+import SiteHeader from "./components/Header/SiteHeader";
 import {Layout} from 'antd';
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import SiteHeaderContainer from "./components/Header/HeaderContainer";
 
 const { Sider, Content} = Layout;
 
@@ -21,14 +21,14 @@ const App = (props) => {
             <Sider>
                 <Navbar/>
             </Sider>
-            <SiteHeader/>
+            <SiteHeaderContainer/>
             <Layout className={s.content_wrap}>
                 <Content className={s.content_wrapper}>
                     <Switch>
                         <Route exact path='/'>
                             <Redirect to='/profile'/>
                         </Route>
-                        <Route path='/profile/:userId'>
+                        <Route path='/profile/:userId?'>
                             <ProfileContainer />
                         </Route>
                         <Route path='/dialogs'>

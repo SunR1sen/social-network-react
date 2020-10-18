@@ -1,16 +1,17 @@
 import React from "react";
 import panorama from "./panorama.jpg";
 import s from './ProfileInfo.module.scss';
-import Preloader from "../../Preloader/Preloader";
+import Preloader from "../../../common/Preloader/Preloader";
 import {Avatar} from 'antd';
 
-const ProfileInfo = (props) => {
+const  ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
 
-    let { small } = props.profile.photos;
-    let { aboutMe } = props.profile;
+
+    let {small} = props.profile.photos;
+    let {aboutMe} = props.profile;
 
     return (
         <div>
@@ -21,8 +22,16 @@ const ProfileInfo = (props) => {
                 <div className={s.profilePhoto}>
                     {small ? <Avatar src={small} size={85}/> : <Avatar size={85}>USER</Avatar>}
                 </div>
-                <span className={s.aboutTitle}>About Me:</span>
-                <p className={s.aboutMe}>{aboutMe ? aboutMe : 'Чмо, которое не соизволило статус добавить'}</p>
+                <div className={s.profileInfo_wrapper}>
+                    <div className={s.profile_fullname}>
+                        <span className={s.fullname_title}>Full name: </span>
+                        <p className={s.fullname}>{props.profile.fullName}</p>
+                    </div>
+                    <div className={s.aboutMe_wrapper}>
+                        <span className={s.aboutTitle}>About Me:</span>
+                        <p className={s.aboutMe}>{aboutMe ? aboutMe : 'Без статуса'}</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
