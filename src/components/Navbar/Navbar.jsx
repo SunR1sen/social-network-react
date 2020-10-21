@@ -8,7 +8,7 @@ import {
     TeamOutlined,
     UserOutlined,
     UploadOutlined,
-    VideoCameraOutlined,
+    VideoCameraOutlined, MailOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -32,7 +32,7 @@ const Navbar = (props) => {
                             <Menu.Item key="1" icon={<UserOutlined />}>
                                 <NavLink to="/profile">Profile</NavLink>
                             </Menu.Item>
-                            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+                            <Menu.Item key="2" icon={<MailOutlined />}>
                                 <NavLink to="/dialogs">Messages</NavLink>
                             </Menu.Item>
                             <Menu.Item key="3" icon={<UploadOutlined />}>
