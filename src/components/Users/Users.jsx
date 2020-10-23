@@ -6,7 +6,6 @@ import {UserOutlined} from "@ant-design/icons";
 import 'antd/dist/antd.css';
 import {NavLink} from "react-router-dom";
 import {Button, Comment} from 'antd';
-import * as axios from "axios";
 import {usersAPI} from "../../api/api";
 
 const Users = (props) => {
@@ -44,27 +43,35 @@ const Users = (props) => {
                         </NavLink>
 
                     }
-                    content={
-                        <p>No description</p>
-                    }
+                    content={<p>No description</p>}
                 />
                 <div className={s.infoContainer}>
+                    {console.log(props.followInProgress)}
                     {user.followed
-                        ? <button className={s.subBtn} onClick={() => {
-                            usersAPI.unfollow(user.id).then( data => {
-                                if (data.resultCode == 0) {
-                                    props.unfollow(user.id)
-                                }
-                            })
-                        }}>Отписаться</button>
-                        : <button className={s.subBtn} onClick={() => {
-                        usersAPI.follow(user.id)
-                            .then( data => {
-                            if (data.resultCode == 0) {
-                                props.follow(user.id)
-                            }
-                        })
-                    }}>Подписаться</button>
+                        ? <button className={s.subBtn}
+                                  disabled={props.followInProgress.some(id => id === user.id)}
+                                  onClick={() => {
+                                      props.toggleIsFollowing(true, user.id);
+                                      usersAPI.unfollow(user.id).then(data => {
+                                          if (data.resultCode == 0) {
+                                              props.unfollow(user.id)
+                                          }
+                                          props.toggleIsFollowing(false, user.id);
+                                      })
+                                  }}>Отписаться</button>
+
+                        : <button className={s.subBtn}
+                                  disabled={props.followInProgress.some(id => id === user.id)}
+                                  onClick={() => {
+                                      props.toggleIsFollowing(true, user.id);
+                                      usersAPI.follow(user.id)
+                                          .then(data => {
+                                              if (data.resultCode == 0) {
+                                                  props.follow(user.id)
+                                              }
+                                              props.toggleIsFollowing(false, user.id);
+                                          })
+                                  }}>Подписаться</button>
                     }
                 </div>
 

@@ -8,7 +8,6 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import './App.module.scss';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import SiteHeader from "./components/Header/SiteHeader";
 import {Layout} from 'antd';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import SiteHeaderContainer from "./components/Header/HeaderContainer";

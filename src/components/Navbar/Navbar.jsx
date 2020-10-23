@@ -1,5 +1,4 @@
 import React from 'react';
-import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import { Layout, Menu } from 'antd';
 import {
@@ -8,7 +7,7 @@ import {
     TeamOutlined,
     UserOutlined,
     UploadOutlined,
-    VideoCameraOutlined, MailOutlined,
+    MailOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
